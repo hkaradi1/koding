@@ -491,6 +491,35 @@ func run(args []string) {
 				}},
 			},
 			cli.Command{
+				Name:  "daemon",
+				Usage: "Manage KD Daemon service.",
+				Subcommands: []cli.Command{{
+					Name:   "install",
+					Usage:  "Install the daemon and dependencies.",
+					Action: ctlcli.ExitErrAction(DaemonInstall, log, "install"),
+				}, {
+					Name:   "uninstall",
+					Usage:  "Uninstall the daemon and dependencies.",
+					Action: ctlcli.ExitErrAction(DaemonUninstall, log, "uninstall"),
+				}, {
+					Name:   "start",
+					Usage:  "Start the daemon service.",
+					Action: ctlcli.ExitErrAction(DaemonStart, log, "start"),
+				}, {
+					Name:   "restart",
+					Usage:  "Restart the daemon service.",
+					Action: ctlcli.ExitErrAction(DaemonRestart, log, "restart"),
+				}, {
+					Name:   "stop",
+					Usage:  "Stop the daemon service.",
+					Action: ctlcli.ExitErrAction(DaemonStop, log, "stop"),
+				}, {
+					Name:   "status",
+					Usage:  "Health check the local installation status.",
+					Action: ctlcli.ExitErrAction(DaemonStatus, log, "Status"),
+				}},
+			},
+			cli.Command{
 				Name:      "credential",
 				ShortName: "c",
 				Usage:     "Manage stack credentials.",
@@ -679,7 +708,6 @@ func run(args []string) {
 					},
 				}},
 			},
-
 			cli.Command{
 				Name:  "team",
 				Usage: "List available teams and set team context.",
