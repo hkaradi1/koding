@@ -41,6 +41,7 @@ var sudoRequiredFor = []string{
 	"stop",
 	"restart",
 	"update",
+	"daemon",
 }
 
 // log is used as a global loggger, for commands like ListCommand that
